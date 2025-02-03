@@ -1,0 +1,28 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+	height: 100%;
+}
+
+body {
+	margin: 0;
+	font-family: 'Segoe UI', "Helvetica Neue", sans-serif;
+}
+
+
+.breadcrumb {
+	margin-right: 8px;
+
+	&.active {
+		color: rgba(10, 90, 209, 0.685);
+		font-weight: 500;
+	}
+}
+
+
+.mat-mdc-list-item:not(.mat-mdc-list-item-interactive),
+.mat-mdc-list-option:not(.mat-mdc-list-item-interactive),
+.pointer {
+	cursor: pointer !important;
+}

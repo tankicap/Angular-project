@@ -1,0 +1,43 @@
+<mat-toolbar class="breadcrumb-toolbar">
+	<nav>
+		<!-- [ngClass]="{ 'pointer' : selectedContry, 'active': !selectedContry}" -->
+		<span class="breadcrumb" [class.active]="!selectedContry" [class.pointer]="selectedContry"
+			(click)="resetSelection()">
+			Country</span>
+		@if (selectedContry) {
+		<span class="breadcrumb"> &gt;</span>
+		<span class="breadcrumb" [class.active]="selectedContry && !selectedMonth"> {{selectedContry}}</span>
+		<span class="breadcrumb" *ngIf="selectedMonth"> &gt;</span>
+		<span class="breadcrumb" [class.active]="selectedMonth"> {{selectedMonth}}</span>
+		}
+		<!-- @if (selectedYear) {
+		<span class="breadcrumb"> &gt;</span>
+		<span class="breadcrumb"> {{selectedYear}}</span>
+		} -->
+	</nav>
+</mat-toolbar>
+<div class="content-wrapper">
+	<!-- Country selector -->
+	<ng-container *ngIf="!selectedContry">
+		<app-country-selector (countrySelected)="onCountrySelected($event)"></app-country-selector>
+	</ng-container>
+	<!-- Month selector -->
+	<ng-container *ngIf="selectedContry && !selectedMonth">
+		<app-month-selector (monthSelected)="onMonthSelected($event)" [country]="selectedContry"></app-month-selector>
+	</ng-container>
+
+	<!-- Transaction selector -->
+	<ng-container *ngIf="selectedContry && selectedMonth">
+		<div class="demo-button-container">
+			<button mat-raised-button (click)="addData()" class="demo-button">
+				Add data
+			</button>
+			<button mat-raised-button [disabled]="!dataToDisplay.length" (click)="removeData()"  class="demo-button">
+				Remove data
+			</button>
+		</div>
+
+		<app-month-transaction [dataSource]="dataSource" (selectionChange)="onSelectRows($event)"></app-month-transaction>
+	</ng-container>
+
+</div>
