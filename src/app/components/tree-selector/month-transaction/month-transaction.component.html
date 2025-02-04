@@ -1,4 +1,10 @@
 <ng-container *ngIf="!selectedElement">
+
+
+
+  <app-form (addElement)="onAddItem($event)"></app-form>
+
+
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
     <!-- Checkbox Column -->
     <ng-container matColumnDef="select">

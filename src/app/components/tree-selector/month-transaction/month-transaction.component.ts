@@ -6,16 +6,17 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { MatTableModule } from '@angular/material/table';
 import { ElementDetailComponent } from "./element-detail/element-detail.component";
 import { CommonModule } from '@angular/common';
+import { FormComponent } from "./form/form.component";
 
 @Component({
   selector: 'app-month-transaction',
-  imports: [MatCheckboxModule, MatTableModule, ElementDetailComponent,CommonModule],
+  imports: [MatCheckboxModule, MatTableModule, ElementDetailComponent, CommonModule, FormComponent],
   templateUrl: './month-transaction.component.html',
   styleUrl: './month-transaction.component.scss'
 })
 export class MonthTransactionComponent {
 
-  @Input() dataSource: any;
+  @Input() dataSource!: MatTableDataSource<PeriodicElement>;
 
   selectedElement?:PeriodicElement;
   
@@ -25,8 +26,8 @@ export class MonthTransactionComponent {
   selection = new SelectionModel<PeriodicElement>(true, []);
   
   constructor(){
-    console.log(this.selection.selected + 'seee');
   }
+
   isAllSelected() {
     const numSelected = this.selection.selected.length;
     const numRows = this.dataSource.data.length;
@@ -57,4 +58,7 @@ export class MonthTransactionComponent {
     this.selectedElement=row;
   }
 
+  onAddItem(newElement:PeriodicElement){
+    this.dataSource.data = [...this.dataSource.data, newElement];
+  }
 }

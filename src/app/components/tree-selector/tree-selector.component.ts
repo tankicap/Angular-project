@@ -80,14 +80,7 @@ export class TreeSelectorComponent {
   selectedRows: PeriodicElement[] = []; // Променлива за селектираните редови
 
 
-  addData() {
-    const randomElementIndex = Math.floor(Math.random() * ELEMENT_DATA.length);
-    this.dataToDisplay = [
-      ...this.dataToDisplay,
-      ELEMENT_DATA[randomElementIndex],
-    ];
-    this.dataSource.data=this.dataToDisplay;
-  }
+  
 
 
   onSelectRows(row:PeriodicElement[]){

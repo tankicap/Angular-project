@@ -1,0 +1,18 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" [placeholder]="'Enter name'">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Weight</mat-label>
+      <input matInput formControlName="weight" [placeholder]="'Enter weight'">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Symbol</mat-label>
+      <input matInput formControlName="symbol" [placeholder]="'Enter symbol'">
+    </mat-form-field>
+
+    <button type="submit">Save</button>
+  </form>  
